@@ -88,22 +88,25 @@
             text-shadow: 0 0 5px #00ff88;
         }
 
-        .connect-wallet {
+        .cta-button {
             background: transparent;
             border: 2px solid #00ff88;
             color: #00ff88;
-            padding: 0.5rem 1rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
+            font-size: 1.1rem;
             font-weight: 600;
             transition: all 0.3s;
             animation: pulse 1.5s infinite;
+            display: inline-block;
         }
 
-        .connect-wallet:hover {
+        .cta-button:hover {
             background: #00ff88;
             color: #0a0a0a;
             box-shadow: 0 0 20px #00ff88;
+            transform: scale(1.05);
         }
 
         .hero {
@@ -131,24 +134,23 @@
             animation: fadeIn 1.5s ease-in;
         }
 
-        .cta-button {
-            background: transparent;
-            border: 2px solid #00ff88;
+        .contract-address {
+            font-size: 0.9rem;
             color: #00ff88;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            animation: pulse 1.5s infinite;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: block;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cta-button:hover {
-            background: #00ff88;
-            color: #0a0a0a;
-            box-shadow: 0 0 20px #00ff88;
-            transform: scale(1.05);
+        .contract-address:hover {
+            background: rgba(0, 0, 0, 0.7);
         }
 
         section {
@@ -163,6 +165,8 @@
         section:nth-child(2) { animation-delay: 0.2s; }
         section:nth-child(3) { animation-delay: 0.4s; }
         section:nth-child(4) { animation-delay: 0.6s; }
+        section:nth-child(5) { animation-delay: 0.8s; }
+        section:nth-child(6) { animation-delay: 1.0s; }
 
         h2 {
             font-size: 2.5rem;
@@ -173,7 +177,14 @@
             text-shadow: 0 0 10px #00ff88;
         }
 
-        .about, .tokenomics, .roadmap {
+        h3 {
+            font-size: 1.5rem;
+            color: #00ff88;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .about, .features, .tokenomics, .roadmap, .team {
             background: rgba(26, 26, 26, 0.9);
             border-radius: 10px;
             padding: 3rem;
@@ -181,8 +192,27 @@
             box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
         }
 
-        .about p {
+        .about p, .features p, .team p {
             margin-bottom: 1.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            background: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
         }
 
         .tokenomics-grid {
@@ -238,6 +268,25 @@
             box-shadow: 0 0 10px #00ff88;
         }
 
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: #2a2a2a;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+        }
+
         footer {
             background: rgba(26, 26, 26, 0.9);
             padding: 2rem;
@@ -280,13 +329,17 @@
                 display: none;
             }
 
-            .connect-wallet {
+            .cta-button {
                 font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
+                padding: 0.8rem 1.5rem;
             }
 
             h2 {
                 font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -297,10 +350,12 @@
             <div class="logo">LunaYield</div>
             <div class="nav-links">
                 <a href="#about">About</a>
+                <a href="#features">Features</a>
                 <a href="#tokenomics">Tokenomics</a>
                 <a href="#roadmap">Roadmap</a>
+                <a href="#team">Team</a>
             </div>
-            <a href="#" class="connect-wallet" onclick="connectWallet()">Connect Wallet</a>
+            <a href="https://raydium.io/swap/" target="_blank" class="cta-button">Buy $LUNA Now</a>
         </nav>
     </header>
 
@@ -308,15 +363,41 @@
         <div class="hero-content">
             <h1>LunaYield Protocol</h1>
             <p>Decentralized yield optimization on Solana. Maximize your returns with our automated staking and liquidity strategies.</p>
-            <a href="#" class="cta-button">Buy $LUNA Now</a>
+            <a href="https://raydium.io/swap/" target="_blank" class="cta-button">Buy $LUNA Now</a>
+            <code class="contract-address" title="Click to copy">ca: xxxxxxxxxxxxxxxxxxxxxxxxxx</code>
         </div>
     </section>
 
     <section id="about" class="about">
         <h2>About LunaYield</h2>
-        <p>LunaYield Protocol is a next-generation DeFi platform built on the Solana blockchain, designed to revolutionize yield farming through automation and efficiency. Launched on pump.fun, our protocol leverages Solana’s high-speed, low-cost transactions to deliver unparalleled performance for $LUNA holders.</p>
-        <p>Our proprietary algorithms optimize staking and liquidity provision, dynamically adjusting to market conditions to maximize returns while minimizing risk. Whether you’re a seasoned DeFi user or new to crypto, LunaYield’s intuitive interface and robust security make it accessible and trustworthy.</p>
-        <p>We envision a future where decentralized finance is seamless and inclusive. Our team is committed to continuous innovation, with plans to integrate advanced AI-driven strategies and cross-chain interoperability. Stay tuned for our social media channels (Twitter, Discord), which will be announced soon as we expand our community outreach.</p>
+        <h3>Vision</h3>
+        <p>LunaYield Protocol aims to redefine decentralized finance by making yield farming accessible, efficient, and secure. Built on the Solana blockchain, we leverage its unparalleled speed and low transaction costs to deliver a seamless DeFi experience. Our vision is to empower users worldwide to achieve financial freedom through automated, high-yield strategies.</p>
+        <h3>Technology</h3>
+        <p>Our protocol utilizes advanced smart contracts and AI-driven algorithms to optimize staking and liquidity provision. By dynamically adjusting to market conditions, LunaYield ensures maximum returns with minimal risk. Our audited contracts and integration with Solana’s ecosystem (e.g., Serum, Raydium) provide a robust foundation for scalability and security.</p>
+        <h3>Community</h3>
+        <p>LunaYield is community-driven, with plans for decentralized governance via $LUNA token voting. We’re committed to transparency and will soon launch our social media channels (Twitter, Discord) to foster engagement. Stay tuned for updates as we build a vibrant ecosystem for $LUNA holders.</p>
+    </section>
+
+    <section id="features" class="features">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Automated Yield Optimization</h3>
+                <p>Our AI-driven algorithms analyze market trends in real-time to maximize staking and liquidity returns.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Decentralized Governance</h3>
+                <p>$LUNA holders can vote on protocol upgrades, ensuring a community-driven future.</p>
+            </div>
+            <div class="feature-item">
+                <h3>High Security</h3>
+                <p>Audited smart contracts and multi-layered security protect user funds and data.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Low Fees</h3>
+                <p>Built on Solana, LunaYield offers near-zero transaction costs for all operations.</p>
+            </div>
+        </div>
     </section>
 
     <section id="tokenomics" class="tokenomics">
@@ -336,7 +417,7 @@
             </div>
             <div class="tokenomics-item">
                 <h3>Team & Development</h3>
-                <p>20% (200M $LUNA)</p>
+                <p>20% (200M $LUNA, vested over 2 years)</p>
             </div>
             <div class="tokenomics-item">
                 <h3>Marketing</h3>
@@ -348,11 +429,31 @@
     <section id="roadmap" class="roadmap">
         <h2>Roadmap</h2>
         <ol>
-            <li><strong>Q4 2024:</strong> Token launch on pump.fun and initial liquidity pool creation.</li>
-            <li><strong>Q1 2025:</strong> Staking platform beta release and community governance integration.</li>
-            <li><strong>Q2 2025:</strong> Full platform launch with advanced yield optimization algorithms.</li>
-            <li><strong>Q3 2025:</strong> Partnerships with major Solana protocols and cross-chain expansion.</li>
+            <li><strong>Q3 2024:</strong> Whitepaper release and initial token design on pump.fun.</li>
+            <li><strong>Q4 2024:</strong> Token launch on pump.fun, initial liquidity pool creation, and community building.</li>
+            <li><strong>Q1 2025:</strong> Staking platform beta release, integration with Solana DEXs, and governance framework.</li>
+            <li><strong>Q2 2025:</strong> Full platform launch with advanced yield optimization and mobile app beta.</li>
+            <li><strong>Q3 2025:</strong> Partnerships with major Solana protocols, cross-chain bridge development.</li>
+            <li><strong>Q4 2025:</strong> Global marketing campaign and expansion to additional blockchains.</li>
         </ol>
+    </section>
+
+    <section id="team" class="team">
+        <h2>Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <h3>Lead Developer</h3>
+                <p>Anonymous Solana expert with 5+ years in blockchain development, previously contributed to major DeFi protocols.</p>
+            </div>
+            <div class="team-member">
+                <h3>Chief Strategist</h3>
+                <p>Experienced crypto veteran focused on yield optimization and community growth.</p>
+            </div>
+            <div class="team-member">
+                <h3>Security Lead</h3>
+                <p>Specialist in smart contract audits, ensuring LunaYield’s robust security standards.</p>
+            </div>
+        </div>
     </section>
 
     <footer>
@@ -362,16 +463,19 @@
     </footer>
 
     <script>
-        function connectWallet() {
-            alert('Connecting to your Solana wallet...');
-        }
-
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // Copy contract address to clipboard
+        document.querySelector('.contract-address').addEventListener('click', function() {
+            navigator.clipboard.writeText(this.textContent.replace('ca: ', '')).then(() => {
+                alert('Contract address copied to clipboard!');
             });
         });
     </script>
